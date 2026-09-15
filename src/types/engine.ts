@@ -131,3 +131,113 @@ export interface ScratchModelMeta {
   contextLength: number;
   quantization: QuantizationType;
 }
+
+export interface RagChunk {
+  id: string;
+  docId: string;
+  docTitle: string;
+  content: string;
+  chunkIndex: number;
+  tokenCount: number;
+  embeddingPreview: number[];
+}
+
+export interface RagDocument {
+  id: string;
+  title: string;
+  fileName: string;
+  fileType: 'txt' | 'md' | 'json' | 'code' | 'manual';
+  content: string;
+  uploadedAt: number;
+  sizeBytes: number;
+  chunkCount: number;
+  chunks: RagChunk[];
+}
+
+export interface RagSearchResult {
+  chunk: RagChunk;
+  score: number; // 0 to 1 cosine similarity
+  matchedTerms: string[];
+}
+
+export interface ChatSession {
+  id: string;
+  title: string;
+  createdAt: number;
+  updatedAt: number;
+  backend: BackendType;
+  messages: ChatMessage[];
+  systemPrompt: string;
+  temperature: number;
+  topP: number;
+  repetitionPenalty: number;
+  useRag: boolean;
+}
+
+export interface BenchmarkRunResult {
+  backend: BackendType;
+  modelName: string;
+  status: 'idle' | 'running' | 'completed' | 'failed';
+  timeToFirstTokenMs: number;
+  tokensPerSecond: number;
+  totalTimeMs: number;
+  promptTokens: number;
+  completionTokens: number;
+  totalTokens: number;
+  memoryFootprintMB: number;
+  responsePreview: string;
+  error?: string;
+}
+
+export type SubconsciousActivity =
+  | 'idle'
+  | 'priming_context'
+  | 'prewarming_agents'
+  | 'dreaming_consolidation'
+  | 'intuitive_inference';
+
+export interface SubconsciousState {
+  enabled: boolean;
+  activity: SubconsciousActivity;
+  dedicatedNpuTiles: number;
+  estimatedPowerWatts: number;
+  ticksProcessed: number;
+  lastConsolidationTime: number;
+  primedCount: number;
+  consolidationCycleCount: number;
+}
+
+export interface SubconsciousThought {
+  id: string;
+  timestamp: number;
+  type:
+    | 'primed_context'
+    | 'subagent_prewarm'
+    | 'intuition_whisper'
+    | 'memory_consolidation'
+    | 'associative_leap';
+  summary: string;
+  detail: string;
+  confidence: number; // 0 to 1
+  associatedTopic: string;
+  targetSubAgent?: string;
+}
+
+export interface PrimedContextItem {
+  id: string;
+  source: string;
+  snippet: string;
+  relevanceScore: number;
+  suggestedAction?: string;
+  prewarmedTool?: string;
+}
+
+export interface ConsolidatedMemoryNode {
+  id: string;
+  category: 'user_profile' | 'technical_fact' | 'system_preference' | 'conversation_insight';
+  subject: string;
+  insight: string;
+  synapticStrength: number; // Plasticity score (1-10)
+  createdAt: number;
+  lastAccessed: number;
+}

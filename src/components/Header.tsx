@@ -1,5 +1,19 @@
 import React from 'react';
-import { Cpu, Terminal, Sparkles, Box, Plug, Zap, Server, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import {
+  Cpu,
+  Terminal,
+  Sparkles,
+  Box,
+  Plug,
+  Zap,
+  Server,
+  ShieldCheck,
+  CheckCircle2,
+  Trophy,
+  Database,
+  BookOpen,
+  Brain,
+} from 'lucide-react';
 import { BackendType, HardwareStatus, LemonadeConfig } from '../types/engine';
 
 interface HeaderProps {
@@ -21,6 +35,10 @@ export const Header: React.FC<HeaderProps> = ({
 }) => {
   const tabs = [
     { id: 'playground', label: 'Inference Playground', icon: Terminal },
+    { id: 'subconscious', label: 'Subconscious Mind', icon: Brain },
+    { id: 'arena', label: 'Benchmark Arena', icon: Trophy },
+    { id: 'rag', label: 'RAG Knowledge Base', icon: Database },
+    { id: 'primer', label: 'AI 101 Primer', icon: BookOpen },
     { id: 'agent', label: 'Agent Console', icon: Sparkles },
     { id: 'npu', label: 'AMD NPU & Topology', icon: Cpu },
     { id: 'lemonade', label: 'Lemonade Sidecar', icon: Server },

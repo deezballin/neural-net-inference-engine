@@ -8,6 +8,10 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Header } from './components/Header';
 import { PlaygroundTab } from './components/PlaygroundTab';
+import { SubconsciousTab } from './components/SubconsciousTab';
+import { ArenaTab } from './components/ArenaTab';
+import { RagTab } from './components/RagTab';
+import { PrimerTab } from './components/PrimerTab';
 import { AgentTab } from './components/AgentTab';
 import { NpuTopologyTab } from './components/NpuTopologyTab';
 import { LemonadeTab } from './components/LemonadeTab';
@@ -88,6 +92,19 @@ export default function App() {
                 pluginSystem={pluginSystem}
               />
             )}
+
+            {activeTab === 'subconscious' && <SubconsciousTab />}
+
+            {activeTab === 'arena' && (
+              <ArenaTab
+                scratchEngine={scratchEngine}
+                lemonadeBridge={lemonadeBridge}
+              />
+            )}
+
+            {activeTab === 'rag' && <RagTab />}
+
+            {activeTab === 'primer' && <PrimerTab />}
 
             {activeTab === 'agent' && (
               <AgentTab
