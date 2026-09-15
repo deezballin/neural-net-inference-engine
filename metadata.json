@@ -1,0 +1,6 @@
+{
+  "name": "Modular Inference Engine & Agent System",
+  "description": "A scratch-built modular inference engine supporting AMD NPU acceleration, Lemonade server sidecar integration, plugin architecture, and autonomous agent loops.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
